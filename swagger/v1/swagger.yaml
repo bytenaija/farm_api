@@ -1,0 +1,56 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/carts":
+    post:
+      summary: Creates a cart
+      tags:
+      - Carts
+      parameters: []
+      responses:
+        '201':
+          description: cart created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+              required:
+              - user_id
+    get:
+      summary: Retrieves a cart
+      tags:
+      - Carts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: cart retrieved
+    delete:
+      summary: Deletes a cart
+      tags:
+      - Carts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: cart deleted
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
